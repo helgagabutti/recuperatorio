@@ -1,0 +1,131 @@
+En la clase Computadora, implementar los métodos para asegurar que dos
+computadoras sean consideradas iguales únicamente si tienen el mismo
+número de serie.
+
+public boolean equals(Object o) {
+if (this == o)
+return true;
+if (o == null || !(o instanceof Computadora))
+return false;
+Computadora Computadora = (Computadora) o;
+return NumeroSerie.equals(computadora.NumeroSerie);
+}
+
+
+
+Implemente el método buscarComputadora(String numeroSerie) en la
+clase  InventarioComputadoras.
+El método debe cumplir con los siguientes requisitos:
+- El sistema cuenta con dos listas internas: Escritorio y Laptop.
+- El método debe recibir un número de serie como parámetro.
+- Debe buscar primero en la lista de escritorios y si encuentra un escritorio
+cuyo número de serie coincida exactamente con el número recibido, debe
+retornar ese objeto.
+- Si no se encontró en escritorios, debe buscar en la lista de laptops y si
+encuentra una laptop con el número de serie indicado, debe retornar esa
+laptop.
+- Si el número de serie no coincide con ningún dispositivo de ambas listas,
+el método debe retornar null.
+
+
+public Computadora buscarComputadora(String numeroSerie) {
+for (Escritorio NumeroSerie : Escritorio) {
+if (Computadora.getnumeroSerie().equals(numeroSerie)) {
+return NumeroSerie;
+}
+}
+// Si no lo encontró antes, busca en la lista de Laptop.
+for (Escritorio NumeroSerie : Laptop) {
+if (Computadora.getnumeroSerie().equals(numeroSerie)) {
+return NumeroSerie;
+}
+}
+
+-------------
+Implemente en la clase Laptop el método requerido por la interface
+correspondiente.
+El cálculo del precio final debe considerar:
+- Una depreciación del 12% por cada año de uso, debido a que las laptops
+pierden valor más rápido que las computadoras de escritorio.
+- Un descuento adicional del 15% relacionado al desgaste típico de
+portabilidad (batería, pantalla, bisagras, etc.).
+El método debe:
+- Calcular los años de uso,
+- Aplicar la depreciación anual,
+- Aplicar el descuento por portabilidad,
+Y retornar el precio final resultante.
+
+public double anioActual (double precioBase, int anioActual ) {
+// Calcular depreciación por años de uso
+double deprecAño = this.anioActual * 0.12;
+// Calcular depreciación por desgaste tipico
+double deprecAdic = this.anioActual * 0.15;
+// Calcular costo final
+double PrecioVenta = deprecAño * (1 + deprecAño);
+return costoConEdad * (1 - deprecAdic);
+}
+--------------
+Implemente una excepción que deberá lanzarse al intentar crear un objeto
+de tipo Escritorio que posea menos de 5 puertos disponibles.
+La excepción debe ser verificada, por lo que el código que crea un
+Escritorio deberá manejarla mediante try/catch o declararla con throws.
+La clase de la excepción debe incluir:
+Un constructor que reciba un mensaje personalizado.
+Un constructor por defecto con un mensaje predeterminado indicando que
+un escritorio debe tener al menos 5 puertos.
+
+//En la clase PuertosInsuficientesException.java
+public class PuertasInsuficientesException extends Exception {
+/**
+* Constructor que permite crear la excepción con un mensaje de error específico.
+*/
+public PuertasInsuficientesException (String message) {
+super(message);
+}
+}
+//En la clase Auto
+Vehiculo nuevoVehiculo;
+// Según el tipo elegido, se piden los datos específicos y se crea el objeto
+// correspondiente.
+if (tipo == 1) {
+System.out.print("Número de puertas: ");
+int puertas = menu.leerOpcion();
+nuevoVehiculo = new Auto(marca, modelo, anio, patente, km, puertas);
+} else if (tipo == 2) {
+System.out.print("Capacidad de carga (toneladas): ");
+double carga = menu.leerDouble();
+nuevoVehiculo = new Camion(marca, modelo, anio, patente, km, carga);
+} else {
+System.out.println("Tipo de vehículo no válido.");
+return;
+}
+flota.add(nuevoVehiculo);
+System.out.println("Vehículo registrado exitosamente.");
+} catch (PuertasInsuficientesException e) { // Maneja el error segun cantidad de puertas.
+System.out.println("Error al crear el vehículo: " + e.getMessage());
+} catch (Exception e) { // Maneja cualquier otro error inesperado.
+System.out.println("Ocurrió un error inesperado: " + e.getMessage());
+}
+}
+
+---------------
+Cree una excepción que debe lanzarse cuando se intente crear un objeto
+Auto con una cantidad de puertas menor a 3.
+La excepción debe ser verificada, por lo tanto el código que construye un
+Auto deberá manejarla con try/catch o declararla con throws.
+La clase de la excepción debe incluir:
+Un constructor que reciba un mensaje personalizado.
+Un constructor por defecto con un mensaje predeterminado indicando que
+un auto debe tener al menos 3 puertas.
+
+public Auto(String marca, String modelo, int anio, int cantidadPuertas,
+double precio, String color) throws CantidadPuertasInvalidaException {
+// Validación de cantidad de puertas
+if (cantidadPuertas < 3) {
+throw new CantidadPuertasInvalidaException(
+"Error: No se puede crear un auto con " + cantidadPuertas +
+" puertas. Un auto debe tener al menos 3 puertas."
+);
+}
+
+

@@ -1,0 +1,21 @@
+# IntelliJ
+.idea/
+*.iml
+
+# External dependencies
+lib/
+
+# Compiled classes
+/target/
+/out/
+
+# Logs
+/log/
+*.log
+
+# visual studio code
+.vscode/
+.DS_Store
+src/.DS_Store
+
+.fake
